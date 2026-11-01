@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vesplaria プライバシーポリシー</title>
+  <meta name="description" content="Vesplariaのプライバシーポリシー">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f7f8;
+      --surface: #ffffff;
+      --text: #202124;
+      --muted: #5f6368;
+      --border: #e2e4e7;
+      --accent: #6b5cff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP",
+                   "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      line-height: 1.8;
+    }
+    main {
+      width: min(880px, calc(100% - 32px));
+      margin: 40px auto;
+      padding: 40px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+    h1 { margin-top: 0; font-size: 2rem; line-height: 1.35; }
+    h2 { margin-top: 2.4rem; font-size: 1.25rem; }
+    ul { padding-left: 1.4rem; }
+    .meta, .note { color: var(--muted); }
+    .draft {
+      margin: 0 0 24px;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fafafa;
+      color: var(--muted);
+    }
+    a { color: var(--accent); }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .92rem;
+    }
+    @media (max-width: 640px) {
+      main { margin: 0; width: 100%; padding: 24px 20px; border: 0; border-radius: 0; }
+      h1 { font-size: 1.7rem; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <p class="draft"><strong>公開準備中</strong> — 問い合わせ先の確定後に正式公開します。</p>
+
+  <h1>Vesplaria プライバシーポリシー</h1>
+  <p class="meta">最終更新日：2026年11月1日</p>
+
+  <p>
+    本プライバシーポリシーは、Vesplariaが提供する誕生日・プレゼント管理アプリ
+    「Vesplaria」（以下「本アプリ」）における情報の取扱いを説明するものです。
+  </p>
+
+  <h2>1. 本アプリが端末内で扱う情報</h2>
+  <p>本アプリは、ユーザーが登録した以下の情報を端末内で管理します。</p>
+  <ul>
+    <li>人物名</li>
+    <li>誕生日・年代に関する情報</li>
+    <li>性別等の任意プロフィール情報</li>
+    <li>人物写真</li>
+    <li>趣味・関心</li>
+    <li>好み</li>
+    <li>欲しいもの・気になっているもの</li>
+    <li>メモ</li>
+    <li>プレゼント履歴・候補</li>
+    <li>通知設定</li>
+  </ul>
+  <p>
+    現在のMVPでは、これらの正本を端末内のSQLiteおよびアプリ専用領域に保存し、
+    人物データのクラウド同期は行いません。人物写真は端末から選択または撮影された画像を
+    アプリ専用領域へコピーして管理し、AIサービスや商品検索サービスへ送信しません。
+  </p>
+
+  <h2>2. AI相談で送信する情報</h2>
+  <p>
+    ユーザーがAIによるプレゼント提案を実行した場合、提案に必要な範囲で以下の情報を
+    本アプリのバックエンドへ送信することがあります。
+  </p>
+  <ul>
+    <li>年代</li>
+    <li>趣味・関心</li>
+    <li>好み</li>
+    <li>欲しいもの・気になっているもの</li>
+    <li>プレゼント予算</li>
+    <li>避けたいもの</li>
+    <li>ユーザーが今回入力した自由記述</li>
+    <li>過去のプレゼント履歴の一部</li>
+  </ul>
+  <p>
+    AI相談では、人物名、人物写真、正確な誕生日、生年、性別は送信しません。
+    バックエンドはAI相談の入力本文を独自のデータベースへ永続保存せず、
+    通常のアプリケーションログにも入力原文を記録しません。
+  </p>
+  <p>
+    AI提案の生成にはOpenAI APIを利用します。バックエンドではResponses APIを
+    <code>store=false</code> で呼び出します。OpenAI APIに送信された入出力は、
+    OpenAIの標準設定ではモデル学習には利用されません。ただし、不正利用監視等の目的で
+    一定期間保持される場合があります。
+  </p>
+
+  <h2>3. 商品検索で送信する情報</h2>
+  <p>ユーザーが商品検索を実行した場合、以下の検索条件をバックエンドへ送信します。</p>
+  <ul>
+    <li>検索キーワード</li>
+    <li>価格条件</li>
+    <li>ページ番号等の検索条件</li>
+  </ul>
+  <p>
+    商品検索にはRakuten Web Serviceを利用するため、検索結果取得に必要な範囲で
+    検索条件が楽天側へ送信されます。バックエンドは商品検索キーワードを独自DBへ
+    永続保存せず、通常のアプリケーションログにも検索キーワードやProviderの
+    生レスポンスを記録しません。
+  </p>
+
+  <h2>4. アプリの正当性確認と不正利用防止</h2>
+  <p>
+    本アプリはバックエンドの不正利用防止のため、Firebase App Checkおよび
+    Google Play Integrityを利用します。これらのサービスでは、
+    Firebase Installation ID、アプリ情報、端末情報、integrity token、
+    ライセンス状態等の技術情報が処理される場合があります。
+  </p>
+
+  <h2>5. バックエンドの運用情報</h2>
+  <p>
+    安定運用、セキュリティ、不正利用防止、レート制限のため、リクエスト日時、
+    APIパス、ステータスコード、処理時間、Provider種別、エラー種別、
+    ネットワークやサーバーログに含まれる技術情報を処理する場合があります。
+  </p>
+  <p>
+    レート制限用Firestoreには、処理対象の種別、時間枠、集計回数、有効期限等だけを保存し、
+    人物データ、AI入力本文、商品検索キーワード、App Check tokenは保存しません。
+  </p>
+
+  <h2>6. 利用目的</h2>
+  <ul>
+    <li>AIによるプレゼント提案</li>
+    <li>商品検索</li>
+    <li>アプリ・端末の正当性確認</li>
+    <li>不正利用防止</li>
+    <li>レート制限</li>
+    <li>セキュリティ</li>
+    <li>障害調査およびサービスの安定運用</li>
+  </ul>
+  <p>
+    現在のMVPでは、広告配信、広告プロフィール作成、本格的なAnalyticsのために
+    ユーザーデータを収集しません。
+  </p>
+
+  <h2>7. 外部サービス</h2>
+  <p>現在のMVPでは、主に以下の外部サービスを利用します。</p>
+  <ul>
+    <li>Google Cloud / Firebase</li>
+    <li>Google Play Integrity</li>
+    <li>OpenAI API</li>
+    <li>Rakuten Web Service / Rakuten Affiliate</li>
+  </ul>
+  <p>
+    各サービスへ送信された情報は、各Providerの利用規約、プライバシーポリシー、
+    データ処理条件等に基づいて処理されます。また、Providerのインフラ構成により、
+    日本国外で情報が処理される場合があります。
+  </p>
+
+  <h2>8. 情報の保存期間と削除</h2>
+  <p>
+    人物プロフィール、写真、プレゼント履歴等のローカルデータは、
+    ユーザーが本アプリ内で対象人物を削除した場合、関連するローカルデータと
+    アプリ管理下の写真を削除します。
+  </p>
+  <p>
+    本アプリのバックエンドは人物プロフィールのクラウド上の正本を保持せず、
+    AI入力本文および商品検索キーワードを独自DBへ永続保存しません。
+    レート制限用の集計メタデータには自動的な有効期限を設定します。
+    外部Providerにおける保存期間は各Providerの最新ポリシーに従います。
+  </p>
+
+  <h2>9. セキュリティ</h2>
+  <ul>
+    <li>本番通信にHTTPSを使用します。</li>
+    <li>Firebase App Check / Play Integrityでバックエンドを保護します。</li>
+    <li>Providerの認証情報をモバイルアプリへ埋め込まず、Secret Managerで管理します。</li>
+    <li>Secret、token、AI入力原文、商品検索キーワードを通常ログへ出力しません。</li>
+    <li>バックエンドで人物データの永続的なマスターレコードを作成しません。</li>
+  </ul>
+
+  <h2>10. Android権限</h2>
+  <p>Android版では、主に以下の権限・機能を利用します。</p>
+  <ul>
+    <li>インターネット接続</li>
+    <li>通知</li>
+    <li>端末再起動後の通知再設定</li>
+  </ul>
+  <p>
+    人物写真の選択等については、可能な範囲でAndroidのシステムPickerを利用し、
+    不要な広範囲ストレージアクセスを要求しません。
+  </p>
+
+  <h2>11. 本ポリシーの変更</h2>
+  <p>
+    アプリ機能、外部Provider、SDK、データフロー、法令またはプラットフォームポリシーが
+    変更された場合、必要に応じて本ポリシーを更新します。重要な変更を行う場合は、
+    適切な方法でユーザーへ周知します。
+  </p>
+
+  <h2>12. 開発者・お問い合わせ</h2>
+  <p>開発者 / Publisher：Vesplaria</p>
+  <p><strong>プライバシーに関する問い合わせ先：公開前に確定します。</strong></p>
+
+  <footer>
+    <p>Vesplaria Privacy Policy</p>
+  </footer>
+</main>
+</body>
+</html>
